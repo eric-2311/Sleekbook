@@ -1,0 +1,34 @@
+import * as SessionApiUtil from '../util/session_api_util';
+
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const SIGN_UP_USER = "SIGN_UP_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+
+const receiveCurrentUser = currentUser => ({
+    type: RECEIVE_CURRENT_USER,
+    currentUser
+});
+
+export const login = user => dispatch => {
+    SessionApiUtil.login(user)
+        .then(user => dispatch(receiveCurrentUser(user)));
+};
+
+const signUpUser = user => ({
+    type: SIGN_UP_USER,
+    user
+});
+
+export const signup = user => dispatch => {
+    SessionApiUtil.signup(user)
+        .then(user => dispatch(signUpUser(user)));
+};
+
+const logoutCurrentUser = () => ({
+    type: LOGOUT_USER
+});
+
+export const logout = () => dispatch => {
+    SessionApiUtil.logout()
+        .then(() => dispatch(logoutCurrentUser()));
+};
