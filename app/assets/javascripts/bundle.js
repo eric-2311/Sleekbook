@@ -240,21 +240,11 @@ function LoginPage() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log(currentUser);
-  }); // console.log(user)
-
-  function updateEmail() {
-    return function (e) {
-      return setUser({
-        email: e.currentTarget.value
-      });
-    };
-  }
-
-  ;
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
-    var currentUser = Object.assign({}, user);
+    var currentUser = Object.assign({}, currentUser);
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(currentUser));
   }
 
@@ -265,9 +255,14 @@ function LoginPage() {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Email:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
-    onChange: updateEmail(currentUser.email)
+    onChange: function onChange(e) {
+      return setUser({
+        email: e.target.value
+      });
+    }
   }))));
 }
+;
 
 /***/ }),
 

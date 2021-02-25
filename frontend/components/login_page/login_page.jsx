@@ -13,17 +13,12 @@ export default function LoginPage() {
 
     useEffect(() => {
         console.log(currentUser)
-    })
-
-    // console.log(user)
-    function updateEmail() {
-        return e => setUser({ email: e.currentTarget.value });
-    };
+    });
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        const currentUser = Object.assign({}, user);
+        const currentUser = Object.assign({}, currentUser);
         dispatch(signup(currentUser))
     };
 
@@ -34,9 +29,9 @@ export default function LoginPage() {
                 <label>Email:
                     <input
                         type="text"
-                        onChange={updateEmail(currentUser.email)}/>
+                        onChange={e => setUser({ email: e.target.value })}/>
                 </label>
             </form>
         </div>
-    )
-}
+    );
+};
