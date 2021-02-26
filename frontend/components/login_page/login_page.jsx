@@ -5,28 +5,32 @@ import { useState, useEffect } from 'react';
 import { signup, logout, login } from '../../actions/session_actions';
 
 export default function LoginPage() {
-    const [currentUser, setUser] = useState({
+    const [user, setUser] = useState({
         email: '',
         first_name: '',
         last_name: '',
         password: ''
-    });
-    const user = useSelector(state => state.entities.users[state.session.id]);
-    const dispatch = useDispatch(signup(currentUser));
-
+    }); 
+    const state = useSelector(state => {
+        return {
+            currentUser: state.entities.users[state.session.id]
+        }
+    })
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        console.log(currentUser)
         console.log(user)
+        console.log(state)
     });
 
     function handleSignUp(e) {
         e.preventDefault();
-        dispatch(signup(currentUser));
+        dispatch(signup(user));
     };
 
     function handleLogin(e) {
         e.preventDefault();
-        dispatch(login(currentUser))
+        dispatch(login(user))
     }
 
     function handleLogout(e) {
@@ -34,13 +38,14 @@ export default function LoginPage() {
         dispatch(logout())
     }
 
-    if (window.currentUser) {
+    if (state.currentUser) {
         return (
             <div>
                 <h1>Welcome {window.currentUser.first_name}</h1>
                 <button onClick={handleLogout}>Sign Out</button>
             </div>
         )
+        // return <Redirect to="/" />
     } else {
         return (
             <div>

@@ -240,28 +240,30 @@ function LoginPage() {
     password: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
-      currentUser = _useState2[0],
+      user = _useState2[0],
       setUser = _useState2[1];
 
-  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.entities.users[state.session.id];
+  var state = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return {
+      currentUser: state.entities.users[state.session.id]
+    };
   });
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(currentUser));
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(currentUser);
     console.log(user);
+    console.log(state);
   });
 
   function handleSignUp(e) {
     e.preventDefault();
-    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(currentUser));
+    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(user));
   }
 
   ;
 
   function handleLogin(e) {
     e.preventDefault();
-    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(currentUser));
+    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(user));
   }
 
   function handleLogout(e) {
@@ -269,10 +271,10 @@ function LoginPage() {
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
   }
 
-  if (window.currentUser) {
+  if (state.currentUser) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome ", window.currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       onClick: handleLogout
-    }, "Sign Out"));
+    }, "Sign Out")); // return <Redirect to="/" />
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign Up Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
       onSubmit: handleSignUp
@@ -495,7 +497,7 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       console.log(state);
-      return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.user));
+      return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     default:
       return state;
