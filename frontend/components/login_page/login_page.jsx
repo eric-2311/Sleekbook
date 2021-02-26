@@ -11,17 +11,27 @@ export default function LoginPage() {
         last_name: '',
         password: ''
     }); 
+
     const state = useSelector(state => {
         return {
             currentUser: state.entities.users[state.session.id]
+            //currentUser : user try this!
         }
     })
+
+    // Triggering state change using useSelector and setUser
+
+    // useEffect(() => {
+    //     useSelector(state => {
+    //         return {
+    //             currentUser: state.entities.users[state.session.id]
+    //         }
+    //     })
+    // });
+
+    console.log(state)
+
     const dispatch = useDispatch();
-    
-    useEffect(() => {
-        console.log(user)
-        console.log(state)
-    });
 
     function handleSignUp(e) {
         e.preventDefault();
@@ -35,17 +45,17 @@ export default function LoginPage() {
 
     function handleLogout(e) {
         e.preventDefault();
-        dispatch(logout())
+        dispatch(logout());
     }
 
     if (state.currentUser) {
+        // window.currentUser = state.currentUser;
         return (
             <div>
                 <h1>Welcome {window.currentUser.first_name}</h1>
                 <button onClick={handleLogout}>Sign Out</button>
             </div>
         )
-        // return <Redirect to="/" />
     } else {
         return (
             <div>

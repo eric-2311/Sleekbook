@@ -245,14 +245,20 @@ function LoginPage() {
 
   var state = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return {
-      currentUser: state.entities.users[state.session.id]
+      currentUser: state.entities.users[state.session.id] //currentUser : user try this!
+
     };
-  });
+  }); // Triggering state change using useSelector and setUser
+  // useEffect(() => {
+  //     useSelector(state => {
+  //         return {
+  //             currentUser: state.entities.users[state.session.id]
+  //         }
+  //     })
+  // });
+
+  console.log(state);
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(user);
-    console.log(state);
-  });
 
   function handleSignUp(e) {
     e.preventDefault();
@@ -272,9 +278,10 @@ function LoginPage() {
   }
 
   if (state.currentUser) {
+    // window.currentUser = state.currentUser;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome ", window.currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       onClick: handleLogout
-    }, "Sign Out")); // return <Redirect to="/" />
+    }, "Sign Out"));
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign Up Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
       onSubmit: handleSignUp
