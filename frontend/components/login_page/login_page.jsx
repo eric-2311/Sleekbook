@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup, logout, login } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
 export default function LoginPage() {
     const [user, setUser] = useState({
@@ -17,11 +18,6 @@ export default function LoginPage() {
     });
 
     const dispatch = useDispatch();
-
-    function handleSignUp(e) {
-        e.preventDefault();
-        dispatch(signup(user));
-    };
 
     function handleLogin(e) {
         e.preventDefault();
@@ -65,44 +61,13 @@ export default function LoginPage() {
                                     password: e.target.value
                                 }))}/>
                         <input className="sign-in-btn" type="submit" value="Log In" />
+                        <input 
+                            className="create-btn" 
+                            type="button" 
+                            value="Create New Account"
+                            onClick={() => dispatch(openModal("signup"))} />
                     </form>
                 </div>
-                {/* <h1>Sign Up Form</h1> */}
-                {/* <form onSubmit={handleSignUp}>
-                    <label>First Name:
-                        <input
-                            type="text"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                first_name: e.target.value
-                            }))}/>
-                    </label>
-                    <label>Last Name:
-                        <input
-                            type="text"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                last_name: e.target.value
-                            }))}/>
-                    </label>
-                    <label>Email:
-                        <input
-                            type="text"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                email: e.target.value
-                            }))}/>
-                    </label>
-                    <label>Password:
-                        <input
-                            type="password"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                password: e.target.value
-                            }))}/>
-                    </label>
-                    <input type="submit" value="Sign Up"/>
-                </form> */}
             </div>
         );
     }
