@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+// import { Redirect } from 'react-router-dom';
 import { signup, logout, login } from '../../actions/session_actions';
 
 export default function LoginPage() {
@@ -20,6 +19,7 @@ export default function LoginPage() {
     })
 
     // Triggering state change using useSelector and setUser
+    // Attempt using AuthRoutes
 
     // useEffect(() => {
     //     useSelector(state => {
@@ -48,7 +48,7 @@ export default function LoginPage() {
         dispatch(logout());
     }
 
-    if (state.currentUser) {
+    if (window.currentUser) {
         // window.currentUser = state.currentUser;
         return (
             <div>

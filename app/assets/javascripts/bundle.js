@@ -228,8 +228,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-
-
+ // import { Redirect } from 'react-router-dom';
 
 
 function LoginPage() {
@@ -249,6 +248,7 @@ function LoginPage() {
 
     };
   }); // Triggering state change using useSelector and setUser
+  // Attempt using AuthRoutes
   // useEffect(() => {
   //     useSelector(state => {
   //         return {
@@ -277,7 +277,7 @@ function LoginPage() {
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
   }
 
-  if (state.currentUser) {
+  if (window.currentUser) {
     // window.currentUser = state.currentUser;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome ", window.currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       onClick: handleLogout
@@ -37212,13 +37212,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_2__.default)();
+  // const store = configureStore(); 
   var root = document.getElementById('root');
+  var store;
+
+  if (window.currentUser) {
+    var preloadedState = {
+      entities: {
+        users: _defineProperty({}, window.currentUser.id, window.currentUser)
+      },
+      session: {
+        id: window.currentUser.id
+      }
+    };
+    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_2__.default)(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = (0,_store_store__WEBPACK_IMPORTED_MODULE_2__.default)();
+  }
+
   window.getState = store.getState;
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__.default, {
     store: store
