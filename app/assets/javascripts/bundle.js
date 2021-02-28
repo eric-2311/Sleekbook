@@ -188,7 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "sleekbook", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_page_login_page__WEBPACK_IMPORTED_MODULE_1__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_page_login_page__WEBPACK_IMPORTED_MODULE_1__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -228,7 +228,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
- // import { Redirect } from 'react-router-dom';
 
 
 function LoginPage() {
@@ -244,20 +243,9 @@ function LoginPage() {
 
   var state = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return {
-      currentUser: state.entities.users[state.session.id] //currentUser : user try this!
-
+      currentUser: state.entities.users[state.session.id]
     };
-  }); // Triggering state change using useSelector and setUser
-  // Attempt using AuthRoutes
-  // useEffect(() => {
-  //     useSelector(state => {
-  //         return {
-  //             currentUser: state.entities.users[state.session.id]
-  //         }
-  //     })
-  // });
-
-  console.log(state);
+  });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   function handleSignUp(e) {
@@ -277,57 +265,24 @@ function LoginPage() {
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
   }
 
-  if (window.currentUser) {
-    // window.currentUser = state.currentUser;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome ", window.currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  if (state.currentUser) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome ", state.currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       onClick: handleLogout
     }, "Sign Out"));
   } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign Up Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-      onSubmit: handleSignUp
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "First Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      onChange: function onChange(e) {
-        return setUser(function (prevState) {
-          return _objectSpread(_objectSpread({}, prevState), {}, {
-            first_name: e.target.value
-          });
-        });
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Last Name:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      onChange: function onChange(e) {
-        return setUser(function (prevState) {
-          return _objectSpread(_objectSpread({}, prevState), {}, {
-            last_name: e.target.value
-          });
-        });
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Email:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "text",
-      onChange: function onChange(e) {
-        return setUser(function (prevState) {
-          return _objectSpread(_objectSpread({}, prevState), {}, {
-            email: e.target.value
-          });
-        });
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "password",
-      onChange: function onChange(e) {
-        return setUser(function (prevState) {
-          return _objectSpread(_objectSpread({}, prevState), {}, {
-            password: e.target.value
-          });
-        });
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      type: "submit",
-      value: "Sign Up"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "login-page-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "login-title-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+      className: "login-title"
+    }, "sleekbook")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      className: "sign-in-form",
       onSubmit: handleLogin
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Email:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       type: "text",
+      className: "sign-in-input",
+      placeholder: "Email",
       onChange: function onChange(e) {
         return setUser(function (prevState) {
           return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -335,8 +290,10 @@ function LoginPage() {
           });
         });
       }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       type: "password",
+      className: "sign-in-input",
+      placeholder: "Password",
       onChange: function onChange(e) {
         return setUser(function (prevState) {
           return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -344,10 +301,11 @@ function LoginPage() {
           });
         });
       }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      className: "sign-in-btn",
       type: "submit",
       value: "Log In"
-    })));
+    }))));
   }
 }
 ;
@@ -37219,7 +37177,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // const store = configureStore(); 
   var root = document.getElementById('root');
   var store;
 
