@@ -19,6 +19,14 @@ export default function LoginPage() {
 
     const dispatch = useDispatch();
 
+    function handleDemo(e) {
+        e.preventDefault();
+        dispatch(login({
+            email: 'demo@mail.com',
+            password: 'demopassword'
+        }))
+    }
+
     function handleLogin(e) {
         e.preventDefault();
         dispatch(login(user))
@@ -41,6 +49,14 @@ export default function LoginPage() {
             <div className="login-page-container">
                 <div className="login-title-container">
                     <h1 className="login-title">sleekbook</h1>
+                    <p>Try our demo login or sign-up!</p>
+                    <div 
+                        className="demo-sign-in"
+                        onClick={handleDemo}>
+                        <img src={window.demoPic} width="200" height="150"/>
+                        <p>Sign in as Charlie Brown</p>
+                    </div>
+                    
                 </div>
                 <div>
                     <form className="sign-in-form" onSubmit={handleLogin}>

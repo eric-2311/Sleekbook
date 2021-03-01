@@ -282,6 +282,14 @@ function LoginPage() {
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
+  function handleDemo(e) {
+    e.preventDefault();
+    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)({
+      email: 'demo@mail.com',
+      password: 'demopassword'
+    }));
+  }
+
   function handleLogin(e) {
     e.preventDefault();
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(user));
@@ -303,7 +311,14 @@ function LoginPage() {
       className: "login-title-container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
       className: "login-title"
-    }, "sleekbook")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    }, "sleekbook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Try our demo login or sign-up!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "demo-sign-in",
+      onClick: handleDemo
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: window.demoPic,
+      width: "200",
+      height: "150"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Sign in as Charlie Brown"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
       className: "sign-in-form",
       onSubmit: handleLogin
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
