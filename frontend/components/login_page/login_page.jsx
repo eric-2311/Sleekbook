@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signup, logout, login } from '../../actions/session_actions';
+import { logout, login } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 
 export default function LoginPage() {
@@ -49,11 +49,13 @@ export default function LoginPage() {
             <div className="login-page-container">
                 <div className="login-title-container">
                     <h1 className="login-title">sleekbook</h1>
-                    <p>Try our demo login or sign-up!</p>
+                    <p>First time? Try our demo!</p>
                     <div 
                         className="demo-sign-in"
                         onClick={handleDemo}>
-                        <img src={window.demoPic} width="200" height="150"/>
+                        <img 
+                            src={window.demoPic} 
+                            className="demo-login"/>
                         <p>Sign in as Charlie Brown</p>
                     </div>
                     

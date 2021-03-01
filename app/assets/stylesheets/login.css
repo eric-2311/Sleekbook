@@ -61,6 +61,13 @@
     cursor: pointer;
 }
 
+.demo-login {
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .sign-in-input {
     font-family: Arial, Helvetica, sans-serif;
     padding: 15px;
@@ -80,6 +87,7 @@
     background-color: rgb(22, 119, 229);
     border-radius: 5px;
     border: 1px solid lightgray;
+    font-weight: bold;
 }
 
 .sign-in-btn:hover {
@@ -96,6 +104,7 @@
     text-align: center;
     border-radius: 5px;
     border: 1px solid lightgray;
+    font-weight: bold;
 }
 
 .create-btn:hover {
