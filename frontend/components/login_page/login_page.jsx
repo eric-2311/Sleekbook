@@ -11,9 +11,12 @@ export default function LoginPage() {
 
     const state = useSelector(state => {
         return {
-            currentUser: state.entities.users[state.session.id]
+            currentUser: state.entities.users[state.session.id],
+            errors: state.errors
         }
     });
+
+    // console.log(state)
 
     const dispatch = useDispatch();
 
@@ -22,18 +25,22 @@ export default function LoginPage() {
         dispatch(login({
             email: 'demo@mail.com',
             password: 'demopassword'
-        }))
-    }
+        }));
+    };
 
     function handleLogin(e) {
         e.preventDefault();
-        dispatch(login(user))
-    }
+        dispatch(login(user));
+    };
 
     function handleLogout(e) {
         e.preventDefault();
         dispatch(logout());
-    }
+    };
+
+    function renderErrors() {
+        
+    };
 
     if (state.currentUser) {
         return (
@@ -47,16 +54,15 @@ export default function LoginPage() {
             <div className="login-page-container">
                 <div className="login-title-container">
                     <h1 className="login-title">sleekbook</h1>
-                    <p>First time? Try our demo!</p>
+                    <p className="demo-msg">First time? Try our demo!</p>
                     <div 
                         className="demo-sign-in"
                         onClick={handleDemo}>
                         <img 
                             src={window.demoPic} 
                             className="demo-login"/>
-                        <p>Sign in as Charlie Brown</p>
+                        <p className="demo-msg">Sign in as Charlie Brown</p>
                     </div>
-                    
                 </div>
                 <div>
                     <form className="sign-in-form" onSubmit={handleLogin}>

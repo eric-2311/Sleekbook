@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import SignUpForm from './sign_up_form';

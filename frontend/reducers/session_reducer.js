@@ -6,7 +6,7 @@ import {
 
 const _nullUser = Object.freeze({id: null});
 
-const sessionReducer = (state = _nullUser, action) => {
+export default function sessionReducer(state = _nullUser, action) {
     Object.freeze(state);
 
     switch (action.type) {
@@ -20,5 +20,3 @@ const sessionReducer = (state = _nullUser, action) => {
             return state;
     };
 };
-
-export default sessionReducer;
