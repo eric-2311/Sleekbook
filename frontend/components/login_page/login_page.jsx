@@ -6,8 +6,6 @@ import { openModal } from '../../actions/modal_actions';
 export default function LoginPage() {
     const [user, setUser] = useState({
         email: '',
-        first_name: '',
-        last_name: '',
         password: ''
     }); 
 

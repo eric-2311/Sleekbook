@@ -267,8 +267,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function LoginPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     email: '',
-    first_name: '',
-    last_name: '',
     password: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
