@@ -418,6 +418,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ SignUpForm)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -431,6 +439,8 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
+
 function SignUpForm() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     email: '',
@@ -442,8 +452,79 @@ function SignUpForm() {
       user = _useState2[0],
       setUser = _useState2[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sign Up Form"));
+  var state = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return {
+      currentUser: state.entities.users[state.session.id]
+    };
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  function handleSignUp(e) {
+    e.preventDefault();
+    dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(user));
+  }
+
+  ;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "sign-up-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+    className: "sign-up-title"
+  }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "sign-up-msg"
+  }, "It's fast and easy!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    onSubmit: handleSignUp,
+    className: "sign-up-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    placeholder: "First Name",
+    className: "sign-up-input",
+    onChange: function onChange(e) {
+      return setUser(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          first_name: e.target.value
+        });
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    placeholder: "Last Name",
+    className: "sign-up-input",
+    onChange: function onChange(e) {
+      return setUser(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          last_name: e.target.value
+        });
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    placeholder: "Email",
+    className: "sign-up-input",
+    onChange: function onChange(e) {
+      return setUser(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          email: e.target.value
+        });
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "password",
+    placeholder: "Password",
+    className: "sign-up-input",
+    onChange: function onChange(e) {
+      return setUser(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          password: e.target.value
+        });
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    className: "signup-btn",
+    value: "Sign Up"
+  })));
 }
+;
 
 /***/ }),
 

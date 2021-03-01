@@ -44,22 +44,22 @@ export default function LoginPage() {
                 </div>
                 <div>
                     <form className="sign-in-form" onSubmit={handleLogin}>
-                            <input 
-                                type="text"
-                                className="sign-in-input"
-                                placeholder="Email"
-                                onChange={e => setUser(prevState => ({
-                                    ...prevState,
-                                    email: e.target.value
-                                }))}/>
-                            <input
-                                type="password"
-                                className="sign-in-input"
-                                placeholder="Password"
-                                onChange={e => setUser(prevState => ({
-                                    ...prevState,
-                                    password: e.target.value
-                                }))}/>
+                        <input 
+                            type="text"
+                            className="sign-in-input"
+                            placeholder="Email"
+                            onChange={e => setUser(prevState => ({
+                                ...prevState,
+                                email: e.target.value
+                            }))}/>
+                        <input
+                            type="password"
+                            className="sign-in-input"
+                            placeholder="Password"
+                            onChange={e => setUser(prevState => ({
+                                ...prevState,
+                                password: e.target.value
+                            }))}/>
                         <input className="sign-in-btn" type="submit" value="Log In" />
                         <input 
                             className="create-btn" 
