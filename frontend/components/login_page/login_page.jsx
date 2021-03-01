@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout, login } from '../../actions/session_actions';
+import {
+    logout, 
+    login,  
+    clearSessionErrors 
+} from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 
 export default function LoginPage() {
@@ -16,7 +20,7 @@ export default function LoginPage() {
         }
     });
 
-    // console.log(state)
+    console.log(state)
 
     const dispatch = useDispatch();
 
@@ -39,7 +43,13 @@ export default function LoginPage() {
     };
 
     function renderErrors() {
-        
+        return (
+            <ul>
+                {state.errors.session.map((err, i) => (
+                    <li key={`error ${i}`}>{err}</li>
+                ))}
+            </ul>
+        )
     };
 
     if (state.currentUser) {
@@ -63,6 +73,9 @@ export default function LoginPage() {
                             className="demo-login"/>
                         <p className="demo-msg">Sign in as Charlie Brown</p>
                     </div>
+                </div>
+                <div>
+                    {renderErrors()}
                 </div>
                 <div>
                     <form className="sign-in-form" onSubmit={handleLogin}>
@@ -92,5 +105,5 @@ export default function LoginPage() {
                 </div>
             </div>
         );
-    }
+    };
 };

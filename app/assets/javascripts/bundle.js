@@ -172,6 +172,8 @@ var login = function login(user) {
   return function (dispatch) {
     _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.login(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
+    }, function (err) {
+      return dispatch(receiveSessionErrors(err.responseJSON));
     });
   };
 };
@@ -187,6 +189,8 @@ var signup = function signup(user) {
   return function (dispatch) {
     _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signup(user).then(function (user) {
       return dispatch(signUpUser(user));
+    }, function (err) {
+      return dispatch(receiveSessionErrors(err.responseJSON));
     });
   };
 };
@@ -201,6 +205,8 @@ var logout = function logout() {
   return function (dispatch) {
     _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.logout().then(function () {
       return dispatch(logoutCurrentUser());
+    }, function (err) {
+      return dispatch(receiveSessionErrors(err.responseJSON));
     });
   };
 };
@@ -295,8 +301,8 @@ function LoginPage() {
       currentUser: state.entities.users[state.session.id],
       errors: state.errors
     };
-  }); // console.log(state)
-
+  });
+  console.log(state);
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   function handleDemo(e) {
@@ -323,7 +329,13 @@ function LoginPage() {
 
   ;
 
-  function renderErrors() {}
+  function renderErrors() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, state.errors.session.map(function (err, i) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        key: "error ".concat(i)
+      }, err);
+    }));
+  }
 
   ;
 
@@ -348,7 +360,7 @@ function LoginPage() {
       className: "demo-login"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
       className: "demo-msg"
-    }, "Sign in as Charlie Brown"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    }, "Sign in as Charlie Brown"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
       className: "sign-in-form",
       onSubmit: handleLogin
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -386,6 +398,8 @@ function LoginPage() {
       }
     }))));
   }
+
+  ;
 }
 ;
 
