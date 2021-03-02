@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
     logout, 
     login,  
-    clearSessionErrors 
+    clearSessionErrors
 } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 
-export default function LoginPage() {
+function LoginPage() {
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -20,7 +21,9 @@ export default function LoginPage() {
         }
     });
 
-    console.log(state)
+    useEffect(() => {
+        dispatch(clearSessionErrors())
+    }, [])
 
     const dispatch = useDispatch();
 
@@ -52,58 +55,51 @@ export default function LoginPage() {
         )
     };
 
-    if (state.currentUser) {
-        return (
+    return (
+        <div className="login-page-container">
+            <div className="login-title-container">
+                <h1 className="login-title">sleekbook</h1>
+                <p className="demo-msg">First time? Try our demo!</p>
+                <div 
+                    className="demo-sign-in"
+                    onClick={handleDemo}>
+                    <img 
+                        src={window.demoPic} 
+                        className="demo-login"/>
+                    <p className="demo-msg">Sign in as Charlie Brown</p>
+                </div>
+            </div>
+            <div className="login-errors">
+                { renderErrors() }
+            </div>
             <div>
-                <h1>Welcome {state.currentUser.first_name}</h1>
-                <button onClick={handleLogout}>Sign Out</button>
+                <form className="sign-in-form" onSubmit={handleLogin}>
+                    <input 
+                        type="text"
+                        className="sign-in-input"
+                        placeholder="Email"
+                        onChange={e => setUser(prevState => ({
+                            ...prevState,
+                            email: e.target.value
+                        }))}/>
+                    <input
+                        type="password"
+                        className="sign-in-input"
+                        placeholder="Password"
+                        onChange={e => setUser(prevState => ({
+                            ...prevState,
+                            password: e.target.value
+                        }))}/>
+                    <input className="sign-in-btn" type="submit" value="Log In" />
+                    <input 
+                        className="create-btn" 
+                        type="button" 
+                        value="Create New Account"
+                        onClick={() => dispatch(openModal("signup"))} />
+                </form>
             </div>
-        )
-    } else {
-        return (
-            <div className="login-page-container">
-                <div className="login-title-container">
-                    <h1 className="login-title">sleekbook</h1>
-                    <p className="demo-msg">First time? Try our demo!</p>
-                    <div 
-                        className="demo-sign-in"
-                        onClick={handleDemo}>
-                        <img 
-                            src={window.demoPic} 
-                            className="demo-login"/>
-                        <p className="demo-msg">Sign in as Charlie Brown</p>
-                    </div>
-                </div>
-                <div>
-                    {renderErrors()}
-                </div>
-                <div>
-                    <form className="sign-in-form" onSubmit={handleLogin}>
-                        <input 
-                            type="text"
-                            className="sign-in-input"
-                            placeholder="Email"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                email: e.target.value
-                            }))}/>
-                        <input
-                            type="password"
-                            className="sign-in-input"
-                            placeholder="Password"
-                            onChange={e => setUser(prevState => ({
-                                ...prevState,
-                                password: e.target.value
-                            }))}/>
-                        <input className="sign-in-btn" type="submit" value="Log In" />
-                        <input 
-                            className="create-btn" 
-                            type="button" 
-                            value="Create New Account"
-                            onClick={() => dispatch(openModal("signup"))} />
-                    </form>
-                </div>
-            </div>
-        );
-    };
+        </div>
+    );
 };
+
+export default withRouter(LoginPage);

@@ -12,7 +12,8 @@ export default function SignUpForm() {
 
     const state = useSelector(state => {
         return {
-            currentUser: state.entities.users[state.session.id]
+            currentUser: state.entities.users[state.session.id],
+            errors: state.errors
         }
     });
 
@@ -22,6 +23,16 @@ export default function SignUpForm() {
         e.preventDefault();
         dispatch(signup(user))
     };
+
+    function renderErrors() {
+        return (
+            <ul>
+                {state.errors.session.map((err, i) => (
+                    <li key={`errror ${i}`}>{err}</li>
+                ))}
+            </ul>
+        )
+    }
 
     return (
         <div className="sign-up-container">
@@ -60,6 +71,9 @@ export default function SignUpForm() {
                         ...prevState,
                         password: e.target.value
                     }))}/>
+                <div className="signup-errors">
+                    { renderErrors() }
+                </div>
                 <input type="submit" className="signup-btn" value="Sign Up"/>
             </form>
         </div>
