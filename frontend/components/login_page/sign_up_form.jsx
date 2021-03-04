@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signup } from '../../actions/session_actions';
+import { signup, login } from '../../actions/session_actions';
+import { withRouter } from 'react-router-dom';
 
-export default function SignUpForm() {
+function SignUpForm() {
     const [user, setUser] = useState({
         email: '',
         first_name: '',
@@ -19,9 +20,10 @@ export default function SignUpForm() {
 
     const dispatch = useDispatch();
 
+    //Issue with logging in after sign up
     function handleSignUp(e) {
         e.preventDefault();
-        dispatch(signup(user))
+        dispatch(signup(user));
     };
 
     function renderErrors() {
@@ -79,3 +81,5 @@ export default function SignUpForm() {
         </div>
     );
 };
+
+export default withRouter(SignUpForm);

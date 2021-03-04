@@ -14,7 +14,7 @@
 .login-page-container {
     background-color: rgb(240, 242, 245);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     position: absolute;
     right: 0;

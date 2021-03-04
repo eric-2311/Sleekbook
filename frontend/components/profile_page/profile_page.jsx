@@ -1,7 +1,7 @@
 import React from 'react';
-import { logout } from '../../actions/session_actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import ProfileHeader from './profile_header';
 
 function ProfilePage() {
     const state = useSelector(state => {
@@ -10,22 +10,11 @@ function ProfilePage() {
         }
     });
 
-    const dispatch = useDispatch();
-
-    function handleLogout(e) {
-        e.preventDefault();
-        dispatch(logout())
-    }
-
-    if (state.currentUser) {
-        return (
-            <div>
-                Hello World!
-                <p>{state.currentUser.first_name}</p>
-                <button onClick={handleLogout}>LOGOUT</button>
-            </div>
-        )
-    }
+    return (
+        <div className="prf-page-container">
+            <ProfileHeader />
+        </div>
+    )
 }
 
 export default withRouter(ProfilePage);

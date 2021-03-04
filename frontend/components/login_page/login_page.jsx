@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-    logout, 
     login,  
     clearSessionErrors
 } from '../../actions/session_actions';
@@ -38,11 +37,6 @@ function LoginPage() {
     function handleLogin(e) {
         e.preventDefault();
         dispatch(login(user));
-    };
-
-    function handleLogout(e) {
-        e.preventDefault();
-        dispatch(logout());
     };
 
     function renderErrors() {
