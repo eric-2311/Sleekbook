@@ -10,6 +10,8 @@ function ProfilePage() {
         }
     });
 
+    const dispatch = useDispatch();
+
     return (
         <div className="prf-page-container">
             <ProfileHeader />
