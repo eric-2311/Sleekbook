@@ -8,8 +8,11 @@ const App = () => (
     <div>
         <Modal/>
         <header></header>
-        <AuthRoute exact path="/" component={LoginPage}/>
-        <ProtectedRoute exact path="/profile" component={ProfilePage} />
+        <main>
+            <AuthRoute exact path="/" component={LoginPage}/>
+            <ProtectedRoute exact path="/profile" component={ProfilePage} />
+        </main>
+        <footer></footer>
     </div>
 )
 
