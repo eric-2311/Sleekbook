@@ -1,0 +1,21 @@
+.prf-header-container {
+    border: 1px solid black;
+    display: flex;
+    height: 550px;
+    width: 100%;
+    justify-content: center;
+}
+
+.prf-name {
+    /* margin: auto; */
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid green;
+    /* align-self: baseline; */
+}
+
+.prf-logout-btn {
+    height: 20px;
+    border: 1px solid red;
+    align-self: center;
+}
