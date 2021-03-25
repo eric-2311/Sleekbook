@@ -7,7 +7,7 @@ export default function ProfileNav() {
         return {
             currentUser: state.entities.users[state.session.id]
         }
-    })
+    });
     
     const dispatch = useDispatch();
     
