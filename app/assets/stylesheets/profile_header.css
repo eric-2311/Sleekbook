@@ -3,6 +3,21 @@
     display: flex;
     height: 550px;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prf-nav-container {
+    width: 100%;
+    border: 1px solid purple;
+    height: 50px;
+}
+
+.prf-header-content {
+    border: 1px solid blue;
+    width: 63%;
+    height: 100%;
+    display: flex;
     justify-content: center;
 }
 
@@ -10,6 +25,7 @@
     /* margin: auto; */
     display: flex;
     align-items: flex-end;
+    margin-bottom: 80px;
     border: 1px solid green;
     /* align-self: baseline; */
 }
