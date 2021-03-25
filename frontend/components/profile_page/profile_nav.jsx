@@ -17,7 +17,10 @@ export default function ProfileNav() {
     };
 
     return (
-        <div>
+        <div className="prf-nav">
+            <div className="prf-nav-logo">
+                <p>s</p>
+            </div>
             <input 
                 type="button"
                 className="prf-logout-btn" 

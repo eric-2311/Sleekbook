@@ -10,6 +10,27 @@
     width: 100%;
     border: 1px solid purple;
     height: 50px;
+    background-color: white;
+}
+
+.prf-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prf-nav-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 56px;
+    background-color: rgb(22, 119, 229);
+    color: white;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    margin-left: 15px;
+    margin-top: 4px;
 }
 
 .prf-header-content {
@@ -21,12 +42,10 @@
 }
 
 .prf-name {
-    /* margin: auto; */
     display: flex;
     align-items: flex-end;
     margin-bottom: 80px;
     border: 1px solid green;
-    /* align-self: baseline; */
 }
 
 .prf-logout-btn {
