@@ -33,6 +33,19 @@
     margin-top: 3px;
 }
 
+.prf-dropdown-close {
+    display: none;
+}
+
+.prf-dropdown-open {
+    display: block;
+    border: 1px solid black;
+}
+
+.prf-nav-list-item {
+    list-style: none;
+}
+
 .prf-header-content {
     border: 1px solid blue;
     width: 63%;

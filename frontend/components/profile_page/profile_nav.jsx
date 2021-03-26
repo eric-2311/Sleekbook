@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 
 export default function ProfileNav() {
+    const [dropdown, setDropdown] = useState(false);
+
     const state = useSelector(state => {
         return {
             currentUser: state.entities.users[state.session.id]
@@ -10,6 +12,11 @@ export default function ProfileNav() {
     });
     
     const dispatch = useDispatch();
+
+    function handleDropdown(e) {
+        e.preventDefault();
+        dropdown ? setDropdown(false) : setDropdown(true)
+    }
     
     function handleLogout(e) {
         e.preventDefault();
@@ -21,11 +28,19 @@ export default function ProfileNav() {
             <div className="prf-nav-logo">
                 <p>s</p>
             </div>
-            <input 
-                type="button"
-                className="prf-logout-btn" 
-                onClick={handleLogout} 
-                value="LOGOUT"/>
+            <div>
+                <button onClick={handleDropdown}>O</button>
+                <ul className={dropdown ? "prf-dropdown-open" : "prf-dropdown-close"}>
+                    <li className="prf-nav-list-item">
+                        <input 
+                        type="button"
+                        className="prf-logout-btn" 
+                        onClick={handleLogout} 
+                        value="LOGOUT"/>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
-    )
-}
+    );
+};
