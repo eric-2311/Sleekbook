@@ -8,9 +8,9 @@
 
 .prf-nav-container {
     width: 100%;
-    /* border: 1px solid purple; */
     height: 50px;
     background-color: white;
+    /* position: relative; */
 }
 
 .prf-nav {

@@ -1,5 +1,6 @@
 .prf-page-container {
     display: flex;
     justify-content: center;
+    position: relative;
     background-image: linear-gradient(rgba(180, 182, 185), rgba(255, 255, 255));
 }

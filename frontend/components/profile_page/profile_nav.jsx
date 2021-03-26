@@ -28,7 +28,7 @@ export default function ProfileNav() {
             <div className="prf-nav-logo">
                 <p>s</p>
             </div>
-            <div>
+            <div className="prf-nav-dropdown-btn">
                 <button onClick={handleDropdown}>O</button>
                 <ul className={dropdown ? "prf-dropdown-open" : "prf-dropdown-close"}>
                     <li className="prf-nav-list-item">
