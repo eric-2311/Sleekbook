@@ -39,8 +39,7 @@ export default function ProfileNav() {
                         value="LOGOUT"/>
                     </li>
                 </ul>
-            </div>
-            
+            </div>    
         </div>
     );
 };
