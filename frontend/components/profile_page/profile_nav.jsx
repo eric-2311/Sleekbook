@@ -15,8 +15,8 @@ export default function ProfileNav() {
 
     function handleDropdown(e) {
         e.preventDefault();
-        dropdown ? setDropdown(false) : setDropdown(true)
-    }
+        dropdown ? setDropdown(false) : setDropdown(true);
+    };
     
     function handleLogout(e) {
         e.preventDefault();
@@ -32,11 +32,11 @@ export default function ProfileNav() {
                 <button onClick={handleDropdown}>O</button>
                 <ul className={dropdown ? "prf-dropdown-open" : "prf-dropdown-close"}>
                     <li className="prf-nav-list-item">
-                        <input 
-                        type="button"
-                        className="prf-logout-btn" 
-                        onClick={handleLogout} 
-                        value="LOGOUT"/>
+                        <input
+                            type="button"
+                            className="prf-logout-btn" 
+                            onClick={handleLogout} 
+                            value="LOGOUT"/>
                     </li>
                 </ul>
             </div>    

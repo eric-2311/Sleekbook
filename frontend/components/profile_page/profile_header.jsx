@@ -10,6 +10,7 @@ export default function ProfileHeader() {
     });
 
     const dispatch = useDispatch();
+    
 
     return (
         <div className="prf-header-container">

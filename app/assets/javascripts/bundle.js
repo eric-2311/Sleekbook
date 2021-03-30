@@ -694,6 +694,8 @@ function ProfileNav() {
     dropdown ? setDropdown(false) : setDropdown(true);
   }
 
+  ;
+
   function handleLogout(e) {
     e.preventDefault();
     dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)());
