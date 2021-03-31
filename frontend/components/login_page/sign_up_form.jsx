@@ -21,6 +21,7 @@ function SignUpForm() {
     const dispatch = useDispatch();
 
     //Issue with logging in after sign up
+    //Double check reqs and bootstrapping
     function handleSignUp(e) {
         e.preventDefault();
         dispatch(signup(user));
